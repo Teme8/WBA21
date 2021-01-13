@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity, Image, StyleSheet} from "react-native";
+import { View, Text, TouchableOpacity, Image, StyleSheet, StatusBar, ImageBackground} from "react-native";
 import PropTypes from 'prop-types';
 
 const ListItem = (props) => {
@@ -16,16 +16,23 @@ const ListItem = (props) => {
         <Text>{props.singleMedia.description}</Text>
       </View>
     </TouchableOpacity>
+
   );
 };
 
 const styles = StyleSheet.create({
   row: {
+    flex: 1,
     flexDirection: 'row',
     padding: 15,
-    marginBottom: 5,
-    backgroundColor: '#eee',
+    marginBottom: 15,
+    backgroundColor: 'lightgreen',
     borderRadius: 16,
+    borderBottomColor: 'black',
+    borderWidth: 1,
+    width: '90%',
+    marginLeft: '5%',
+    alignItems: 'center',
   },
   imagebox: {
     flex: 1,
@@ -33,13 +40,12 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    borderRadius: 6,
+    borderRadius: 80,
   },
   textbox: {
     flex: 2,
     padding: 10,
   },
-
   listTitle: {
     fontWeight: 'bold',
     fontSize: 20,

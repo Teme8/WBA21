@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { SafeAreaView} from "react-native";
 import List from "./components/List";
@@ -8,7 +7,6 @@ const App = () => {
   return (
     <SafeAreaView style={GlobalStyles.droidSafeArea}>
       <List />
-      <StatusBar style="auto" />
     </SafeAreaView>
   );
 };
