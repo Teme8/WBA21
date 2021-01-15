@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   FlatList,
   StyleSheet,
@@ -7,38 +7,12 @@ import {
   ImageBackground,
   StatusBar,
 } from "react-native";
+import { useLoadMedia } from "../hooks/ApiHooks";
 import ListItem from "./ListItem";
 
-const baseUrl = "http://media.mw.metropolia.fi/wbma/";
-
 const List = () => {
-  const [mediaArray, setMediaArray] = useState([]);
 
-  const loadMedia = async (limit = 5) => {
-    try {
-      const response = await fetch(baseUrl + "media?limit=" + limit);
-      const json = await response.json();
-      console.log(json);
-
-      const media = await Promise.all(
-        json.map(async (item) => {
-          const response = await fetch(baseUrl + "media/" + item.file_id);
-          const json = await response.json();
-          console.log("media file data", json);
-          return json;
-        })
-      );
-      console.log("media array data", media);
-
-      setMediaArray(media);
-    } catch (error) {
-      console.error("loadMedia error", error);
-    }
-  };
-
-  useEffect(() => {
-    loadMedia(15);
-  }, []);
+  const mediaArray = useLoadMedia();
 
   return (
     <View style={styles.container}>
