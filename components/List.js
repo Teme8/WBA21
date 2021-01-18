@@ -9,8 +9,9 @@ import {
 } from "react-native";
 import { useLoadMedia } from "../hooks/ApiHooks";
 import ListItem from "./ListItem";
+import PropTypes from 'prop-types';
 
-const List = () => {
+const List = ({navigation}) => {
 
   const mediaArray = useLoadMedia();
 
@@ -29,11 +30,16 @@ const List = () => {
         <FlatList
           data={mediaArray}
           keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }) => <ListItem singleMedia={item} />}
+          renderItem={({ item }) => (
+           <ListItem navigation= {navigation} singleMedia={item} />)}
         />
       </View>
     </View>
   );
+};
+
+List.propTypes = {
+  navigation: PropTypes.object,
 };
 
 export default List;
