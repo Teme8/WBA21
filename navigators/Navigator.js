@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import { NavigationContainer } from "@react-navigation/native";
+import { getFocusedRouteNameFromRoute, NavigationContainer } from "@react-navigation/native";
 import Home from "../views/Home";
 import Profile from "../views/Profile";
 import Single from "../views/Single";
-import Login from "../views/login";
-import { MainContext } from "../contexts/Maincontext";
+import Login from "../views/Login";
+import { MainContext } from "../contexts/MainContext";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();

@@ -1,5 +1,5 @@
 import React from "react";
-import { MainProvider } from "./contexts/Maincontext";
+import { MainProvider } from "./contexts/MainContext";
 import Navigator from './navigators/Navigator';
 
 const App = () => {
