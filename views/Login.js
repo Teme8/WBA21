@@ -3,14 +3,15 @@ import { StyleSheet, View, Text, Button, KeyboardAvoidingView, Platform } from "
 import PropTypes from "prop-types";
 import { MainContext } from "../contexts/MainContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useLogin } from "../hooks/ApiHooks";
+import { useLogin, useUser } from "../hooks/ApiHooks";
 import LoginForm from '../components/LoginForm';
 import RegisterForm from '../components/RegisterForm';
+import {Card, Text} from 'react-native-elements';
 
 const Login = ({ navigation }) => {
   const [isLoggedIn, setIsLoggedIn, setUser] = useContext(MainContext);
   console.log("isLoggedIn?", isLoggedIn);
-  const {checkToken } = useLogin();
+  const {checkToken } = useUser();
 
   const getToken = async () => {
     const userToken = await AsyncStorage.getItem("userToken");
@@ -33,12 +34,21 @@ const Login = ({ navigation }) => {
   return (
     <KeyboardAvoidingView behavior={Platform.OS === 'android' ? 'padding' : 'height'}
     style={styles.container}>
-    <View style={styles.container}>
-      <Text>Login</Text>
-      <LoginForm navigation={navigation}></LoginForm>
-      <Text>Register</Text>
-      <RegisterForm navigation={navigation}></RegisterForm>
-    </View>
+    <View style={styles.appTitle}>
+        <Text h1>MyApp</Text>
+      </View>
+      <View style={styles.form}>
+        <Card>
+          <Card.Title h4>Login</Card.Title>
+          <Card.Divider />
+          <LoginForm navigation={navigation} />
+        </Card>
+        <Card>
+          <Card.Title h4>Register</Card.Title>
+          <Card.Divider />
+          <RegisterForm navigation={navigation} />
+        </Card>
+      </View>
     </KeyboardAvoidingView>
   );
 };
