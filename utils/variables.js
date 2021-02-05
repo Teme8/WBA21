@@ -1,4 +1,6 @@
-const uploadUrl = 'http://media.mw.metropolia.fi/wbma/uploads/';
-const baseUrl = "http://media.mw.metropolia.fi/wbma/";
 
-export {uploadUrl, baseUrl};
+const uploadsUrl = 'https://media-new.mw.metropolia.fi/wbma/uploads/';
+const baseUrl = 'https://media-new.mw.metropolia.fi/wbma/';
+const appIdentifier = 'gjapdfgjkal';
+
+export {uploadsUrl, baseUrl, appIdentifier};

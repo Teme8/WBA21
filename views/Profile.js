@@ -34,25 +34,33 @@ const Profile = ({navigation}) => {
   }, []);
 
   return (
-    <Card>
-      <Card.Title>
-        <Text h1>{user.username}</Text>
-      </Card.Title>
-      <Card.Image
-        source={{uri: avatar}}
-        style={styles.image}
-        PlaceholderContent={<ActivityIndicator />}
-      />
-      <ListItem>
-        <Avatar icon={{name: 'email', color: 'black'}} />
-        <Text>{user.email}</Text>
-      </ListItem>
-      <ListItem>
-        <Avatar icon={{name: 'user', type: 'font-awesome', color: 'black'}} />
-        <Text>{user.full_name}</Text>
-      </ListItem>
-      <Button title={'Logout'} onPress={logout} />
-    </Card>
+    <ScrollView>
+      <Card>
+        <Card.Title>
+          <Text h1>{user.username}</Text>
+        </Card.Title>
+        <Card.Image
+          source={{uri: avatar}}
+          style={styles.image}
+          PlaceholderContent={<ActivityIndicator />}
+        />
+        <ListItem>
+          <Avatar icon={{name: 'email', color: 'black'}} />
+          <Text>{user.email}</Text>
+        </ListItem>
+        <ListItem>
+          <Avatar icon={{name: 'user', type: 'font-awesome', color: 'black'}} />
+          <Text>{user.full_name}</Text>
+        </ListItem>
+        <ListItem bottomDivider onPress={logout}>
+          <Avatar icon={{name: 'logout', color: 'black'}} />
+          <ListItem.Content>
+            <ListItem.Title>Logout</ListItem.Title>
+          </ListItem.Content>
+          <ListItem.Chevron />
+        </ListItem>
+      </Card>
+    </ScrollView>
   );
 };
 
