@@ -1,10 +1,12 @@
-import React, { useContext } from 'react';
-import {StyleSheet, SafeAreaView, Text, Button} from 'react-native';
-import { MainContext } from '../contexts/MainContext';
+import React, {useContext, useEffect, useState} from 'react';
+import {StyleSheet, ActivityIndicator} from 'react-native';
+import {MainContext} from '../contexts/MainContext';
 import PropTypes from 'prop-types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useTag } from '../hooks/ApiHooks';
+import {Card, Text, ListItem, Avatar} from 'react-native-elements';
+import {useTag} from '../hooks/ApiHooks';
 import {uploadsUrl} from '../utils/variables';
+import {ScrollView} from 'react-native-gesture-handler';
 
 const Profile = ({navigation}) => {
   const {isLoggedIn, setIsLoggedIn, user} = useContext(MainContext);
@@ -51,6 +53,13 @@ const Profile = ({navigation}) => {
         <ListItem>
           <Avatar icon={{name: 'user', type: 'font-awesome', color: 'black'}} />
           <Text>{user.full_name}</Text>
+        </ListItem>
+        <ListItem bottomDivider onPress={() => navigation.push('My Files')}>
+          <Avatar icon={{name: 'perm-media', color: 'black'}} />
+          <ListItem.Content>
+            <ListItem.Title>My Files</ListItem.Title>
+          </ListItem.Content>
+          <ListItem.Chevron />
         </ListItem>
         <ListItem bottomDivider onPress={logout}>
           <Avatar icon={{name: 'logout', color: 'black'}} />

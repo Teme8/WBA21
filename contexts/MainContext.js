@@ -21,4 +21,4 @@ MainProvider.propTypes = {
   children: PropTypes.node,
 };
 
-export {MainContext, MainProvider};
+export {MainContext, MainProvider}
